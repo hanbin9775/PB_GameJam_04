@@ -16,16 +16,19 @@ public class PlayerController : MonoBehaviour
 
     Vector2 movement;
 
-    public float dash_timer = 0.1f;
-    public float dash_speed = 15f;
-
+    public float attack_delay = 1f;
+    private bool attackable = true;
     public float attack_timer = 1f;
     public GameObject hit_box;
+
+    //F: weapon, Q,W,E,R :items
+    private int inventory_selector;
 
 
     private void Start()
     {
         cur_speed = move_speed;
+        inventory_selector = 4;
         hit_box.SetActive(false);
     }
 
@@ -42,15 +45,25 @@ public class PlayerController : MonoBehaviour
             cur_dir_y = movement.y;
         }
 
-        //dash input
+        //inventory slot select
+        if (Input.GetKeyDown(KeyCode.Q)) inventory_selector = 0;
+        if (Input.GetKeyDown(KeyCode.W)) inventory_selector = 1;
+        if (Input.GetKeyDown(KeyCode.E)) inventory_selector = 2;
+        if (Input.GetKeyDown(KeyCode.R)) inventory_selector = 3;
+        if (Input.GetKeyDown(KeyCode.F)) inventory_selector = 4;
+
+        //interaction(space) input
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartCoroutine(Dash());
-        }
-        //attack input
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            StartCoroutine(Attack());
+            if (attackable && inventory_selector==4)
+            {
+                StartCoroutine(Attack());
+                StartCoroutine(AttackDelay());
+            }
+            else if(inventory_selector<4)
+            {
+                Inventory.GetInstance().Use_Item(inventory_selector);
+            }
         }
 
     }
@@ -61,21 +74,8 @@ public class PlayerController : MonoBehaviour
         rb.MovePosition(rb.position + movement * cur_speed * Time.fixedDeltaTime);
     }
 
-
-    IEnumerator Dash()
-    {
-        float timer = dash_timer;
-        cur_speed = dash_speed;
-        while (timer > 0)
-        {
-            timer -= 0.01f;
-            yield return null;
-        }
-        cur_speed = move_speed;
-    }
-
     IEnumerator Attack()
-    { 
+    {
         hit_box.SetActive(true);
         hit_box.GetComponent<Transform>().position = new Vector2( transform.position.x+cur_dir_x, transform.position.y + cur_dir_y);
         float timer = attack_timer;
@@ -86,6 +86,18 @@ public class PlayerController : MonoBehaviour
         }
         hit_box.GetComponent<Transform>().position = new Vector2(transform.position.x, transform.position.y);
         hit_box.SetActive(false);
+    }
+
+    IEnumerator AttackDelay()
+    {
+        attackable = false;
+        float timer = attack_delay;
+        while (timer > 0)
+        {
+            timer -= 0.01f;
+            yield return null;
+        }
+        attackable = true;
     }
 
 }

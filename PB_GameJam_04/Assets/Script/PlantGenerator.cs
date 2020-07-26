@@ -20,7 +20,6 @@ public class PlantGenerator : MonoBehaviour
         generate_pos_y = Random.Range(-4f, 4f);
         generate_idx = Random.Range(0, plants.Length - 1);
         timer = generate_time;
-        
     }
 
     // Update is called once per frame
