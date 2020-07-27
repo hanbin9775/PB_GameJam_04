@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
- * This code is from youtube 'CodeMonkey' Channel
- * Field of View Effect in Unity
+ * This code is referenced from youtube 'CodeMonkey' Channel
+ * 'Field of View Effect in Unity' video
  */
 
 public class FieldOfView : MonoBehaviour
@@ -24,6 +24,8 @@ public class FieldOfView : MonoBehaviour
     private Vector2[] uv;
     private int[] triangles;
 
+    private bool player_detected = false;
+
     private void Start()
     {
         mesh = new Mesh();
@@ -33,7 +35,6 @@ public class FieldOfView : MonoBehaviour
         rayCount = 50;
         angleIncrease = fov / rayCount;
         viewDistance = 5f;
-
     }
     private void LateUpdate()
     {
@@ -43,12 +44,14 @@ public class FieldOfView : MonoBehaviour
         uv = new Vector2[vertices.Length];
         triangles = new int[rayCount * 3];
 
+        player_detected = false;
         int vertexIndex = 1;
         int triangleIndex = 0;
-        for(int i=0; i<=rayCount; i++)
+        for (int i=0; i<=rayCount; i++)
         {
             Vector3 vertex;
             RaycastHit2D raycastHit2D = Physics2D.Raycast(origin, GetVectorFromAngle(angle), viewDistance,layerMask);
+
             if(raycastHit2D.collider == null)
             {
                 vertex = origin + GetVectorFromAngle(angle) * viewDistance;
@@ -56,6 +59,7 @@ public class FieldOfView : MonoBehaviour
             else
             {
                 vertex = raycastHit2D.point;
+                if (raycastHit2D.collider.tag == "Player")player_detected = true;
             }
 
             vertices[vertexIndex] = vertex;
@@ -66,7 +70,6 @@ public class FieldOfView : MonoBehaviour
                 triangles[triangleIndex + 1] = vertexIndex - 1;
                 triangles[triangleIndex + 2] = vertexIndex;
                 triangleIndex += 3;
-           
             }
             vertexIndex++;
             angle -= angleIncrease;
@@ -86,6 +89,12 @@ public class FieldOfView : MonoBehaviour
     public void SetOrigin(Vector2 origin)
     {
         this.origin = origin;
+    }
+
+    public bool isPlayerDetected()
+    {
+        if (player_detected) return true;
+        else return false;
     }
 
 }
