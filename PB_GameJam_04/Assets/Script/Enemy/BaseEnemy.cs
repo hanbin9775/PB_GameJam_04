@@ -4,18 +4,5 @@ using UnityEngine;
 
 public class BaseEnemy : MonoBehaviour
 {
-    private int hp;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int hp;
 }

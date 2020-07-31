@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 394480786473733416}
   - component: {fileID: 6527991440068455351}
   - component: {fileID: 897511381947123699}
-  m_Layer: 0
-  m_Name: FoolsMarigold
-  m_TagString: Untagged
+  m_Layer: 8
+  m_Name: Marigold
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

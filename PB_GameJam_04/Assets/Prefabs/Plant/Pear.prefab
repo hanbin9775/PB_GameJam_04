@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8667772257571366019}
   - component: {fileID: 8667772257571366018}
   - component: {fileID: 8667772257571366017}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pear
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8667772257571366016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.43, y: 3.1230054, z: -1}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 5, y: 5, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7767624678712476440}
   - component: {fileID: 7767624678712476438}
   - component: {fileID: 7767624678712476441}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rye1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,9 +113,9 @@ GameObject:
   - component: {fileID: 7767624679092445209}
   - component: {fileID: 7767624679092445206}
   - component: {fileID: 7767624679092445208}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rye
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,7 +180,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item_id: 1
   cur_hp: 3
-  drop_item: {fileID: 0}
+  drop_item: {fileID: 4634971582498707917, guid: db88feac89eb346bfbe63a125e506cf7,
+    type: 3}
   stage2_flag: 3
   stage3_flag: 7
 --- !u!1 &7767624679975971787
@@ -194,7 +195,7 @@ GameObject:
   - component: {fileID: 7767624679975971784}
   - component: {fileID: 7767624679975971782}
   - component: {fileID: 7767624679975971785}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rye1 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +297,7 @@ GameObject:
   - component: {fileID: 7767624680071055196}
   - component: {fileID: 7767624680071055194}
   - component: {fileID: 7767624680071055197}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rye1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +399,7 @@ GameObject:
   - component: {fileID: 7767624680129053672}
   - component: {fileID: 7767624680129053670}
   - component: {fileID: 7767624680129053673}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rye1 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +501,7 @@ GameObject:
   - component: {fileID: 7767624680240856563}
   - component: {fileID: 7767624680240856561}
   - component: {fileID: 7767624680240856560}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rye1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -602,7 +603,7 @@ GameObject:
   - component: {fileID: 7767624680373818426}
   - component: {fileID: 7767624680373818424}
   - component: {fileID: 7767624680373818427}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rye1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8173778495210153547}
   - component: {fileID: 3902450268053660855}
   - component: {fileID: 3841612184015897906}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wolfdrake
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

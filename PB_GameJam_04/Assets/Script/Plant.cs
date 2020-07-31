@@ -10,12 +10,13 @@ public class Plant : MonoBehaviour
 
     public GameObject drop_item;
 
-
     private int cur_stage;
     public float stage2_flag;
     public float stage3_flag;
 
     Animator []child_anims;
+
+    //foolsmarigold
 
     private void Awake()
     {
@@ -24,18 +25,30 @@ public class Plant : MonoBehaviour
         child_anims = GetComponentsInChildren<Animator>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Take_Damage(int dmg)
     {
-        if (collision.tag == "Attack") cur_hp -= 1;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        cur_hp -= dmg;
+        Debug.Log("got hit!");
         if (cur_hp <= 0)
         {
+            //fools'marigold
+            if (item_id == 7)
+            {
+                Collider2D[] hitEnemies = null;
+                hitEnemies = Physics2D.OverlapCircleAll(transform.position, 2f);
+                foreach (Collider2D enemy in hitEnemies)
+                {
+                    if (enemy.tag == "Enemy")
+                    {
+                        if(cur_stage==2)
+                            enemy.GetComponent<Follower>().Take_Damage(5);
+                        if (cur_stage == 3)
+                            enemy.GetComponent<Follower>().Take_Damage(10);
+                    }
+                }
+            }
             for (int i = 1; i < cur_stage; i++)
-                Instantiate(drop_item, new Vector2(transform.position.x + Random.Range(-0.5f,0.5f), transform.position.y + Random.Range(-0.5f, 0.5f)), transform.rotation);
+                Instantiate(drop_item, new Vector2(transform.position.x + Random.Range(-0.5f, 0.5f), transform.position.y + Random.Range(-0.5f, 0.5f)), transform.rotation);
             Destroy(gameObject);
         }
     }
@@ -55,5 +68,8 @@ public class Plant : MonoBehaviour
         }
         cur_stage = 3;
     }
+
+
+    //Plant Effect
 
 }
